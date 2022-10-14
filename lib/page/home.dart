@@ -25,12 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('API Product'),
       ),
-      body: ListView(
-        children: controller.productModel.value.products!.map((e) {
-          return CustomCard(
-            productDetailModel: e,
-          );
-        }).toList(),
+      body: Obx(
+        () => ListView(
+          children: controller.productModel.value.products.map((e) {
+            return CustomCard(
+              productDetailModel: e,
+            );
+          }).toList(),
+        ),
       ),
     );
   }

@@ -20,7 +20,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductModel {
-  List<ProductDetail>? get products => throw _privateConstructorUsedError;
+  List<ProductDetail> get products => throw _privateConstructorUsedError;
   int? get total => throw _privateConstructorUsedError;
   int? get skip => throw _privateConstructorUsedError;
   int? get limit => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $ProductModelCopyWith<$Res> {
   factory $ProductModelCopyWith(
           ProductModel value, $Res Function(ProductModel) then) =
       _$ProductModelCopyWithImpl<$Res>;
-  $Res call({List<ProductDetail>? products, int? total, int? skip, int? limit});
+  $Res call({List<ProductDetail> products, int? total, int? skip, int? limit});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
       products: products == freezed
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductDetail>?,
+              as List<ProductDetail>,
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$$_ProductModelCopyWith<$Res>
           _$_ProductModel value, $Res Function(_$_ProductModel) then) =
       __$$_ProductModelCopyWithImpl<$Res>;
   @override
-  $Res call({List<ProductDetail>? products, int? total, int? skip, int? limit});
+  $Res call({List<ProductDetail> products, int? total, int? skip, int? limit});
 }
 
 /// @nodoc
@@ -107,7 +107,7 @@ class __$$_ProductModelCopyWithImpl<$Res>
       products: products == freezed
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
-              as List<ProductDetail>?,
+              as List<ProductDetail>,
       total: total == freezed
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
@@ -128,19 +128,21 @@ class __$$_ProductModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductModel implements _ProductModel {
   _$_ProductModel(
-      {final List<ProductDetail>? products, this.total, this.skip, this.limit})
+      {final List<ProductDetail> products = const [],
+      this.total,
+      this.skip,
+      this.limit})
       : _products = products;
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$$_ProductModelFromJson(json);
 
-  final List<ProductDetail>? _products;
+  final List<ProductDetail> _products;
   @override
-  List<ProductDetail>? get products {
-    final value = _products;
-    if (value == null) return null;
+  @JsonKey()
+  List<ProductDetail> get products {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_products);
   }
 
   @override
@@ -190,7 +192,7 @@ class _$_ProductModel implements _ProductModel {
 
 abstract class _ProductModel implements ProductModel {
   factory _ProductModel(
-      {final List<ProductDetail>? products,
+      {final List<ProductDetail> products,
       final int? total,
       final int? skip,
       final int? limit}) = _$_ProductModel;
@@ -199,7 +201,7 @@ abstract class _ProductModel implements ProductModel {
       _$_ProductModel.fromJson;
 
   @override
-  List<ProductDetail>? get products;
+  List<ProductDetail> get products;
   @override
   int? get total;
   @override

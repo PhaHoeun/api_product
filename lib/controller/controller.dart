@@ -17,7 +17,7 @@ class Controller extends GetxController {
         .then((response) {
       debugPrint('================================11');
       productModel.value = ProductModel.fromJson(response);
-      debugPrint('============================22');
+      debugPrint('============================22  ;${productModel.value}');
       isLoding(false);
     }).onError((ErrorModel error, stackTrace) {
       debugPrint(

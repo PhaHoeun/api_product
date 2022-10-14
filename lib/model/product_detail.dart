@@ -6,9 +6,9 @@ part 'product_detail.g.dart';
 @freezed
 class ProductDetail with _$ProductDetail {
   factory ProductDetail({
-    int? id,
-    String? title,
-    String? description,
+    @Default(0) int id,
+    @Default('') String title,
+    @Default('') String description,
     int? price,
     double? discountPercentage,
     double? rating,

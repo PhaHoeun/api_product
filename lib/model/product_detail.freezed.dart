@@ -20,9 +20,9 @@ ProductDetail _$ProductDetailFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductDetail {
-  int? get id => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
   int? get price => throw _privateConstructorUsedError;
   double? get discountPercentage => throw _privateConstructorUsedError;
   double? get rating => throw _privateConstructorUsedError;
@@ -44,9 +44,9 @@ abstract class $ProductDetailCopyWith<$Res> {
           ProductDetail value, $Res Function(ProductDetail) then) =
       _$ProductDetailCopyWithImpl<$Res>;
   $Res call(
-      {int? id,
-      String? title,
-      String? description,
+      {int id,
+      String title,
+      String description,
       int? price,
       double? discountPercentage,
       double? rating,
@@ -84,15 +84,15 @@ class _$ProductDetailCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -137,9 +137,9 @@ abstract class _$$_ProductDetailCopyWith<$Res>
       __$$_ProductDetailCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? id,
-      String? title,
-      String? description,
+      {int id,
+      String title,
+      String description,
       int? price,
       double? discountPercentage,
       double? rating,
@@ -179,15 +179,15 @@ class __$$_ProductDetailCopyWithImpl<$Res>
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -228,9 +228,9 @@ class __$$_ProductDetailCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductDetail implements _ProductDetail {
   _$_ProductDetail(
-      {this.id,
-      this.title,
-      this.description,
+      {this.id = 0,
+      this.title = '',
+      this.description = '',
       this.price,
       this.discountPercentage,
       this.rating,
@@ -245,11 +245,14 @@ class _$_ProductDetail implements _ProductDetail {
       _$$_ProductDetailFromJson(json);
 
   @override
-  final int? id;
+  @JsonKey()
+  final int id;
   @override
-  final String? title;
+  @JsonKey()
+  final String title;
   @override
-  final String? description;
+  @JsonKey()
+  final String description;
   @override
   final int? price;
   @override
@@ -329,9 +332,9 @@ class _$_ProductDetail implements _ProductDetail {
 
 abstract class _ProductDetail implements ProductDetail {
   factory _ProductDetail(
-      {final int? id,
-      final String? title,
-      final String? description,
+      {final int id,
+      final String title,
+      final String description,
       final int? price,
       final double? discountPercentage,
       final double? rating,
@@ -345,11 +348,11 @@ abstract class _ProductDetail implements ProductDetail {
       _$_ProductDetail.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
-  String? get title;
+  String get title;
   @override
-  String? get description;
+  String get description;
   @override
   int? get price;
   @override

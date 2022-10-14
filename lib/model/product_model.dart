@@ -7,7 +7,7 @@ part 'product_model.g.dart';
 @freezed
 class ProductModel with _$ProductModel {
   factory ProductModel({
-    List<ProductDetail>? products,
+    @Default([]) List<ProductDetail> products,
     int? total,
     int? skip,
     int? limit,
