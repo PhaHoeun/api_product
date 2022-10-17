@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     position: controller.productModel.value.products.length,
                     columnCount: 2,
                     child: ScaleAnimation(
-                      duration: const Duration(milliseconds: 1000),
+                      duration: const Duration(milliseconds: 500),
                       child: FadeInAnimation(
                         duration: const Duration(milliseconds: 500),
                         child: CustomCard(
