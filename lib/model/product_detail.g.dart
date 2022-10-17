@@ -18,8 +18,10 @@ _$_ProductDetail _$$_ProductDetailFromJson(Map<String, dynamic> json) =>
       brand: json['brand'] as String?,
       category: json['category'] as String?,
       thumbnail: json['thumbnail'] as String?,
-      images:
-          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      images: (json['images'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_ProductDetailToJson(_$_ProductDetail instance) =>

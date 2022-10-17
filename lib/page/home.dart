@@ -2,6 +2,7 @@ import 'package:api_product/controller/controller.dart';
 import 'package:api_product/page/product_detail_screen.dart';
 import 'package:api_product/widget/custom_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,24 +28,46 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('API Product'),
       ),
       body: Obx(
-        () => GridView.count(
-          crossAxisCount: 2,
-          children: controller.productModel.value.products.map((e) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>  ProductDetalScreen(),
-                  ),
-                );
-              },
-              child: CustomCard(
-                productDetailModel: e,
+        () => controller.isLoding.value
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : GridView.count(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                childAspectRatio: 5 / 6,
+                crossAxisCount: 2,
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                children: controller.productModel.value.products
+                    .asMap()
+                    .entries
+                    .map((e) {
+                  return AnimationConfiguration.staggeredGrid(
+                    position: controller.productModel.value.products.length,
+                    columnCount: 2,
+                    child: ScaleAnimation(
+                      duration: const Duration(milliseconds: 1000),
+                      child: FadeInAnimation(
+                        duration: const Duration(milliseconds: 500),
+                        child: CustomCard(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductDetalScreen(
+                                  id: e.value.id,
+                                ),
+                              ),
+                            );
+                          },
+                          productDetailModel: e.value,
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
               ),
-            );
-          }).toList(),
-        ),
       ),
     );
   }

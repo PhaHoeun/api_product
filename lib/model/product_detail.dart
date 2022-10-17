@@ -16,7 +16,7 @@ class ProductDetail with _$ProductDetail {
     String? brand,
     String? category,
     String? thumbnail,
-    List<String>? images,
+    @Default([]) List<String> images,
   }) = _ProductDetail;
 
   factory ProductDetail.fromJson(Map<String, dynamic> json) =>

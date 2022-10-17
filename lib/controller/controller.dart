@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 class Controller extends GetxController {
   var productModel = ProductModel().obs;
   var listProduct = <ProductModel>[].obs;
-
+  var isFavorite = false.obs;
   var isLoding = false.obs;
   var apiBaseHelper = ApiBaseHelper();
 
@@ -19,7 +19,7 @@ class Controller extends GetxController {
         .then((response) {
       debugPrint('================================11');
       productModel.value = ProductModel.fromJson(response);
-      debugPrint('============================22  ;${productModel.value}');
+      debugPrint('============================22  ');
       isLoding(false);
     }).onError((ErrorModel error, stackTrace) {
       debugPrint(
@@ -30,22 +30,33 @@ class Controller extends GetxController {
   }
 
   ///
-  var productDetail = ProductDetail().obs;
+  final productDetail = ProductDetail().obs;
+
+  final detailLoading = false.obs;
+
   Future<ProductDetail> onGetDetail(int id) async {
-    isLoding(true);
+    detailLoading(true);
     await apiBaseHelper
         .onNetworkRequesting(
             url: 'products/$id', methode: METHODE.get, isAuthorize: false)
         .then((response) {
-      debugPrint('================================11');
+      debugPrint('Response = $response');
       productDetail.value = ProductDetail.fromJson(response);
-      debugPrint('============================22  ;${productModel.value}');
-      isLoding(false);
+      debugPrint('productDetail = ${productDetail.value.title}');
+
+      debugPrint('============================44 ');
+      detailLoading(false);
     }).onError((ErrorModel error, stackTrace) {
       debugPrint(
           '==========${error.statusCode} ===========${error.bodyString}');
     });
-    isLoding(false);
+    detailLoading(false);
     return productDetail.value;
+  }
+
+  double disPrice(double price, double disPer) {
+    double result = (price * disPer) / 100;
+    double total = price - result;
+    return total;
   }
 }

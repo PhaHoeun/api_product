@@ -30,7 +30,7 @@ mixin _$ProductDetail {
   String? get brand => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
   String? get thumbnail => throw _privateConstructorUsedError;
-  List<String>? get images => throw _privateConstructorUsedError;
+  List<String> get images => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -54,7 +54,7 @@ abstract class $ProductDetailCopyWith<$Res> {
       String? brand,
       String? category,
       String? thumbnail,
-      List<String>? images});
+      List<String> images});
 }
 
 /// @nodoc
@@ -124,7 +124,7 @@ class _$ProductDetailCopyWithImpl<$Res>
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -147,7 +147,7 @@ abstract class _$$_ProductDetailCopyWith<$Res>
       String? brand,
       String? category,
       String? thumbnail,
-      List<String>? images});
+      List<String> images});
 }
 
 /// @nodoc
@@ -219,7 +219,7 @@ class __$$_ProductDetailCopyWithImpl<$Res>
       images: images == freezed
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String>,
     ));
   }
 }
@@ -238,7 +238,7 @@ class _$_ProductDetail implements _ProductDetail {
       this.brand,
       this.category,
       this.thumbnail,
-      final List<String>? images})
+      final List<String> images = const []})
       : _images = images;
 
   factory _$_ProductDetail.fromJson(Map<String, dynamic> json) =>
@@ -267,13 +267,12 @@ class _$_ProductDetail implements _ProductDetail {
   final String? category;
   @override
   final String? thumbnail;
-  final List<String>? _images;
+  final List<String> _images;
   @override
-  List<String>? get images {
-    final value = _images;
-    if (value == null) return null;
+  @JsonKey()
+  List<String> get images {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_images);
   }
 
   @override
@@ -342,7 +341,7 @@ abstract class _ProductDetail implements ProductDetail {
       final String? brand,
       final String? category,
       final String? thumbnail,
-      final List<String>? images}) = _$_ProductDetail;
+      final List<String> images}) = _$_ProductDetail;
 
   factory _ProductDetail.fromJson(Map<String, dynamic> json) =
       _$_ProductDetail.fromJson;
@@ -368,7 +367,7 @@ abstract class _ProductDetail implements ProductDetail {
   @override
   String? get thumbnail;
   @override
-  List<String>? get images;
+  List<String> get images;
   @override
   @JsonKey(ignore: true)
   _$$_ProductDetailCopyWith<_$_ProductDetail> get copyWith =>
