@@ -1,4 +1,5 @@
 import 'package:api_product/configuration/helper/api_base_helper.dart';
+import 'package:api_product/model/product_detail.dart';
 import 'package:api_product/model/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 class Controller extends GetxController {
   var productModel = ProductModel().obs;
   var listProduct = <ProductModel>[].obs;
+
   var isLoding = false.obs;
   var apiBaseHelper = ApiBaseHelper();
 
@@ -25,5 +27,25 @@ class Controller extends GetxController {
     });
     isLoding(false);
     return productModel.value;
+  }
+
+  ///
+  var productDetail = ProductDetail().obs;
+  Future<ProductDetail> onGetDetail(int id) async {
+    isLoding(true);
+    await apiBaseHelper
+        .onNetworkRequesting(
+            url: 'products/$id', methode: METHODE.get, isAuthorize: false)
+        .then((response) {
+      debugPrint('================================11');
+      productDetail.value = ProductDetail.fromJson(response);
+      debugPrint('============================22  ;${productModel.value}');
+      isLoding(false);
+    }).onError((ErrorModel error, stackTrace) {
+      debugPrint(
+          '==========${error.statusCode} ===========${error.bodyString}');
+    });
+    isLoding(false);
+    return productDetail.value;
   }
 }
