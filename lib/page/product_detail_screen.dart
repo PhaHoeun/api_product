@@ -116,7 +116,7 @@ class _ProductDetalScreenState extends State<ProductDetalScreen> {
                             Text(
                               '${_controller.productDetail.value.stock}',
                               style: const TextStyle(
-                                color: Colors.red,
+                                color: Colors.green,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
