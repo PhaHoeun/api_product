@@ -27,7 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('API Product'),
+        backgroundColor: Colors.pink.withOpacity(0.3),
+        title: const Text('All Products'),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),

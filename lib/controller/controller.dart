@@ -40,9 +40,9 @@ class Controller extends GetxController {
         .onNetworkRequesting(
             url: 'products/$id', methode: METHODE.get, isAuthorize: false)
         .then((response) {
-      debugPrint('Response = $response');
+      debugPrint('Response============');
       productDetail.value = ProductDetail.fromJson(response);
-      debugPrint('productDetail = ${productDetail.value.title}');
+      // debugPrint('productDetail = ${productDetail.value.title}');
 
       debugPrint('============================44 ');
       detailLoading(false);
@@ -58,5 +58,30 @@ class Controller extends GetxController {
     double result = (price * disPer) / 100;
     double total = price - result;
     return total;
+  }
+
+  Future<ProductModel> onSearchProduct(String title) async {
+    isLoding(true);
+    await apiBaseHelper
+        .onNetworkRequesting(
+            url: 'products/search?q=$title',
+            methode: METHODE.get,
+            isAuthorize: false)
+        .then((response) {
+      debugPrint('================================55');
+      productModel.value = ProductModel.fromJson(response);
+      debugPrint('============================66  ');
+      isLoding(false);
+    }).onError((ErrorModel error, stackTrace) {
+      debugPrint(
+          '==========${error.statusCode} ===========${error.bodyString}');
+    });
+    isLoding(false);
+    return productModel.value;
+  }
+
+  onSeacrch(String textSearch) {
+    final text = textSearch.obs;
+    debounce(text, (_) {}, time: const Duration(seconds: 1));
   }
 }
